@@ -22,6 +22,21 @@ use Livewire\Livewire;
 
 // });
 
+/**
+ * Customer routes
+ */
+Route::get('customer', function(){
+    return view('customer.index');
+});
+Route::get('shop', [CustomerController::class, 'getShop'])->name('customer.shop');
+Route::get('about', [CustomerController::class, 'getAbout'])->name('customer.about');
+Route::get('services', [CustomerController::class, 'getServices'])->name('customer.services');
+Route::get('blog', [CustomerController::class, 'getBlog'])->name('customer.blog');
+Route::get('contact', [CustomerController::class, 'getContact'])->name('customer.contact');
+Route::get('cart', [CustomerController::class, 'getCart'])->name('customer.cart');
+Route::get('checkout', [CustomerController::class, 'getCheckout'])->name('customer.checkout');
+Route::get('thankyou', [CustomerController::class, 'getThankyou'])->name('customer.thankyou');
+
 Auth::routes();
 
 Route::get('/',[App\Http\Controllers\Frontend\FrontendController::class, 'index']);
