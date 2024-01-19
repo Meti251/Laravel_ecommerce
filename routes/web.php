@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +20,33 @@ use Livewire\Livewire;
 //     return view('welcome');
 
 // });
+
+/**
+ * Customer routes
+ */
+Route::get('customer', function(){
+    return view('customer.index');
+});
+Route::prefix('customer')->group(function(){
+    Route::controller(App\Http\Controllers\CustomerController::class)->group(function () {
+        Route::get('shop', 'getShop')->name('customer.shop');
+        Route::get('about', 'getAbout')->name('customer.about');
+        Route::get('services', 'getServices')->name('customer.services');
+        Route::get('blog', 'getBlog')->name('customer.blog');
+        Route::get('contact', 'getContact')->name('customer.contact');
+        Route::get('cart', 'getCart')->name('customer.cart');
+        Route::get('checkout', 'getCheckout')->name('customer.checkout');
+        Route::get('thankyou', 'getThankyou')->name('customer.thankyou');
+    });
+});
+// Route::get('shop', [CustomerController::class, 'getShop'])->name('customer.shop');
+// Route::get('about', [CustomerController::class, 'getAbout'])->name('customer.about');
+// Route::get('services', [CustomerController::class, 'getServices'])->name('customer.services');
+// Route::get('blog', [CustomerController::class, 'getBlog'])->name('customer.blog');
+// Route::get('contact', [CustomerController::class, 'getContact'])->name('customer.contact');
+// Route::get('cart', [CustomerController::class, 'getCart'])->name('customer.cart');
+// Route::get('checkout', [CustomerController::class, 'getCheckout'])->name('customer.checkout');
+// Route::get('thankyou', [CustomerController::class, 'getThankyou'])->name('customer.thankyou');
 
 Auth::routes();
 
